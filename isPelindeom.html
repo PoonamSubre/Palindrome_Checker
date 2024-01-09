@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title> Palindrome Checker </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input {
+
+            width: 200px;
+            padding: 8px;
+            font-size: 20px;
+        }
+
+        button {
+            
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Palindrome Checker</h1>
+
+<form id="palindromeForm">
+    <label for="numberInput">Enter a Number:</label>
+    <input type="text" id="numberInput" name="numberInput" required>
+    <button type="button" onclick="checkPalindrome()">Check Palindrome</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function checkPalindrome() {
+        var numberInput = document.getElementById('numberInput').value;
+        var number = parseInt(numberInput);
+
+        if (isNaN(number)) {
+            alert(' ☠️ The invalid entry of the number');
+            return;
+        }
+
+        var originalNumber = number;
+        var reversedNumber = 0;
+
+        while (number > 0) {
+            var digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number = Math.floor(number / 10);
+        }
+
+        var resultElement = document.getElementById('result');
+        
+        if (originalNumber === reversedNumber) {
+            resultElement.textContent = '\u270C Yehhhhh, this is a palindrome number!';
+        } else {
+            resultElement.textContent = 'Not a palindrome number.';
+        }
+    }
+</script>
+
+</body>
+</html>
